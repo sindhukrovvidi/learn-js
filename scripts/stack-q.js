@@ -1,44 +1,46 @@
 class PStack {
   #id;
   constructor() {
-    this.#id = Math.floor(Math.random() * 100) + 1;
+    this.#id = 1;
+    this._persons = [];
   }
 
   showId() {
-    console.log(this);
     return this.#id;
   }
 
-  push(p) {
-    // implement in child class
+  // Getter method for 'persons'
+  get persons() {
+    return this._persons;
   }
 
-  pop() {
-    // implement in child class
+  // Setter method for 'persons'
+  set persons(value) {
+    if (Array.isArray(value)) {
+      this._persons = value;
+    } else {
+      console.error("Invalid assignment. 'persons' must be an array.");
+    }
   }
-
 }
 
 class PStackImpl extends PStack {
-  #persons = []
   constructor() {
     super();
   }
+
   push(p) {
-    return this.#persons.push(p)
+    return this._persons.push(p)
   }
 
   pop() {
-    return this.#persons.pop().age
+    return this._persons.pop().age
   }
-
-  show() {
-    return this.#persons
-  }
-
 }
 
+let pstack = new PStackImpl();
+pstack.persons = [{name: 'John', age: 21}, {name: 'Daniel', age: 29}];
+pstack.push({name: 'Dein', age: 19});
 console.log(pstack.pop());
 console.log(pstack.pop());
-console.log(pstack.show());
-console.log(pstack.showId());
+console.log(pstack.persons);
