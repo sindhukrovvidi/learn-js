@@ -38,10 +38,6 @@ class PStackImpl extends PStack {
 
 }
 
-let pstack = new PStackImpl();
-pstack.push({name: 'Jojo', age: 21});
-pstack.push({name: 'Gabi', age: 29});
-pstack.push({name: 'Dein', age: 19});
 console.log(pstack.pop());
 console.log(pstack.pop());
 console.log(pstack.show());
